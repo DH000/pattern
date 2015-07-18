@@ -1,5 +1,6 @@
 package pattern.iterator.one;
 
+
 /**
  * 
  * @ClassName: DinerMenuIterator 
@@ -9,15 +10,26 @@ package pattern.iterator.one;
  *
  */
 public class DinerMenuIterator implements Iterator<MenuItem> {
+	private MenuItem[] menuItems;
+	private int position = 0;
+
+	public DinerMenuIterator(MenuItem[] menuItems) {
+		super();
+		this.menuItems = menuItems;
+	}
 
 	@Override
 	public boolean hasNext() {
-		return false;
+		if(position >= menuItems.length || null == menuItems[position]){
+			return false;
+		}
+		
+		return true;
 	}
 
 	@Override
 	public MenuItem next() {
-		return null;
+		return menuItems[position ++];
 	}
 
 }

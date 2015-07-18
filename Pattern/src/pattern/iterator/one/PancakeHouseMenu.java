@@ -26,8 +26,8 @@ public class PancakeHouseMenu {
 	public void addItem(String name, String desc, boolean isVeg, double price){
 		menuItems.add(new MenuItem(name, desc, isVeg, price));
 	}
-
-	public List<MenuItem> getMenuItems(){
-		return this.menuItems;
+	
+	public Iterator<MenuItem> iterator(){
+		return new PancakeHouseMenuIterator(menuItems);
 	}
 }
