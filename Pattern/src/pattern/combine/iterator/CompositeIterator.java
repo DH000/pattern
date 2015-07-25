@@ -25,7 +25,7 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 		if (stack.isEmpty()) {
 			return false;
 		}
-		
+
 		// 递归调用
 		Iterator<MenuComponent> iter = stack.peek();
 		if (!iter.hasNext()) {
@@ -38,17 +38,15 @@ public class CompositeIterator implements Iterator<MenuComponent> {
 
 	@Override
 	public MenuComponent next() {
-		if(hasNext()){
-			Iterator<MenuComponent> iter = stack.peek();
-			MenuComponent menuComponent = iter.next();
-			if(menuComponent instanceof Menu){
-				// 父菜单
-				stack.push(menuComponent.iterator());
-			}
-			return menuComponent;
+		Iterator<MenuComponent> iter = stack.peek();
+		MenuComponent menuComponent = iter.next();
+		if (menuComponent instanceof Menu) {
+			// 父菜单
+			System.out.println(this + "add: " + menuComponent.getName());
+			System.out.println(stack);
+			stack.push(menuComponent.iterator());
 		}
-		
-		return null;
+		return menuComponent;
 	}
 
 	@Override
